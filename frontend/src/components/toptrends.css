@@ -1,0 +1,149 @@
+/* TopTrends styles */
+.top-trends-section {
+  width: 100%;
+  margin-top: 24px;
+  padding: 0;                 /* removed horizontal padding so section is flush */
+  box-sizing: border-box;
+}
+
+.top-trends-inner {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  position: relative;
+  padding-left: 0;           /* ensure no inner container padding */
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+/* Title */
+.top-trends-title {
+  font-size: 28px;
+  text-align: center;
+  font-weight: 700;
+  margin: 10px 0 18px;
+  letter-spacing: 0.2px;
+}
+
+/* Grid: responsive 4 / 2 / 1 */
+/* ensure the grid stretches fully across the centered container with no outer gap */
+.top-trends-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  scroll-behavior: smooth;
+
+  width: 100%;               /* fill the container exactly */
+  padding: 0;                /* no inner padding */
+  margin: 0;                 /* no outer margin creating gaps */
+  box-sizing: border-box;
+}
+
+/* card */
+.trend-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.03);
+  min-height: 360px; /* control card height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* image wrapper keeps aspect and center crop */
+.trend-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* image itself */
+.trend-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* overlay fades in at bottom like your screenshot */
+.trend-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+
+  /* background gradient to read text over image */
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.22) 30%, rgba(0,0,0,0.55) 100%);
+  color: white;
+}
+
+/* left area: brand mark or title */
+.overlay-title {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.2px;
+}
+
+/* small brand logo if provided */
+.brand-logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+/* right area: price label */
+.price-label {
+  background: rgba(255,255,255,0.08);
+  padding: 8px 12px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* floating right arrow (circular) */
+/* positioned inside the container so it doesn't create a visible gap on the outside */
+.top-trends-arrow {
+  position: absolute;
+  right: 12px;               /* moved inside the container */
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 40;
+}
+
+/* responsive breakpoints */
+@media (max-width: 1024px) {
+  .top-trends-grid { grid-template-columns: repeat(2, 1fr); }
+  .trend-card { min-height: 320px; }
+}
+
+@media (max-width: 640px) {
+  .top-trends-grid { grid-template-columns: 1fr; gap: 14px; }
+  .trend-card { min-height: 280px; }
+  .top-trends-title { font-size: 22px; }
+  .top-trends-arrow { display: none; } /* hide arrow on small screens */
+}
